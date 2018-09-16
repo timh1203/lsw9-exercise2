@@ -4,28 +4,36 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-// 1. Create the store
-import { createStore } from 'redux'
-const store = createStore(reducer)
+// 1. Import redux
+import { combineReducers, createStore } from 'redux'
 
-// 2. Create the root reducer
-function reducer(state, action) {
-  if (action.type === 'CHANGE_STATE') {
-    return action.payload.newState
-  }
-  
-  return 'State'
+// 5. Combine all the reducers together
+const allReducers = combineReducers({
+  products: productsReducer,
+  user: userReducer
+})
+
+// 2. Create the store with combineReducers
+const store = createStore(allReducers)
+
+// 3. Create the root reducer and subreducers
+function productsReducer(state = [], action) {
+  return state
 }
 
-// 3. Create an action
-const action = {
-  type: "CHANGE_STATE",
-  payload: {
-    newState: 'Change the state'
-  }
+function userReducer(state = '', action) {
+  return state
 }
 
-store.dispatch(action)
+// 4. Create an action
+// const action = {
+//   type: "CHANGE_STATE",
+//   payload: {
+//     newState: 'Change the state'
+//   }
+// }
+
+// store.dispatch(action)
 console.log(store.getState())
 
 ReactDOM.render(<App />, document.getElementById('root'));
