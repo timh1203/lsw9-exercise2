@@ -33,19 +33,23 @@ function productsReducer(state = [], action) {
 }
 
 function userReducer(state = '', action) {
-  return state
+  switch (action.type) {
+    case 'UPDATE_USER':
+      return action.payload.user
+    default:
+        return state
+  }
 }
 
 // 4. Create an action
-// const action = {
-//   type: "CHANGE_STATE",
-//   payload: {
-//     newState: 'Change the state'
-//   }
-// }
+const updateUserAction = {
+  type: "UPDATE_USER",
+  payload: {
+    user: 'John'
+  }
+}
 
-// store.dispatch(action)
-console.log(store.getState())
+store.dispatch(updateUserAction)
 
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
