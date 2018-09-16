@@ -14,7 +14,16 @@ const allReducers = combineReducers({
 })
 
 // 2. Create the store with combineReducers
-const store = createStore(allReducers)
+// 6. Adding an initial state
+const store = createStore(
+  allReducers, 
+  {
+    products: [{
+      name: 'iPhone'
+    }],
+    user: 'Michael'
+  }
+)
 
 // 3. Create the root reducer and subreducers
 function productsReducer(state = [], action) {
