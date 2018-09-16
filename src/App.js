@@ -29,9 +29,10 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, props) => ({
   products: state.products,
-  user: state.user
+  user: state.user,
+  randomUser:  `${state.user} ${props.randomProp}`
 })
 
 const mapActionsToProps = {
