@@ -15,6 +15,7 @@ const allReducers = combineReducers({
 
 // 2. Create the store with combineReducers
 // 6. Adding an initial state
+// 7. Add Redux DevTools
 const store = createStore(
   allReducers, 
   {
@@ -22,7 +23,8 @@ const store = createStore(
       name: 'iPhone'
     }],
     user: 'Michael'
-  }
+  },
+  window.devToolsExtension && window.devToolsExtension()
 )
 
 // 3. Create the root reducer and subreducers
