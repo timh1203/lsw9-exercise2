@@ -42,4 +42,9 @@ const mapActionsToProps = (dispatch, props) => (
     updateUser: updateUser
   }, dispatch)
 )
-export default connect(mapStateToProps, mapActionsToProps)(App)
+const mergeProps = (propsFromState,propsFromDispatch, ownProps) => {
+  console.log(propsFromState,propsFromDispatch, ownProps)
+
+  return {}
+}
+export default connect(mapStateToProps, mapActionsToProps, mergeProps)(App)
