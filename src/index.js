@@ -8,6 +8,8 @@ import registerServiceWorker from './registerServiceWorker';
 // 8. Import Provider
 import { combineReducers, createStore } from 'redux'
 import { Provider } from 'react-redux'
+import productsReducer from './reducers/productsReducer'
+import userReducer from './reducers/userReducer'
 
 // 5. Combine all the reducers together
 const allReducers = combineReducers({
@@ -30,18 +32,6 @@ const store = createStore(
 )
 
 // 3. Create the root reducer and subreducers
-function productsReducer(state = [], action) {
-  return state
-}
-
-function userReducer(state = '', { type, payload}) {
-  switch (type) {
-    case 'UPDATE_USER':
-      return payload.user
-    default:
-        return state
-  }
-}
 
 // 4. Create an action
 // const updateUserAction = {
