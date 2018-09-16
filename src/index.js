@@ -34,12 +34,6 @@ const store = createStore(
 // 3. Create the root reducer and subreducers
 
 // 4. Create an action
-// const updateUserAction = {
-//   type: "UPDATE_USER",
-//   payload: {
-//     user: 'John'
-//   }
-// }
 
 // store.dispatch(updateUserAction)
 
