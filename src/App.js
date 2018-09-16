@@ -3,12 +3,16 @@ import logo from './logo.svg'
 import './App.css'
 
 // 9. Import connect feature
+// 10. Import actions
 import { connect } from 'react-redux'
+import { updateUser } from './actions/userActions'
 
 class App extends Component {
-  render() {
-    console.log(this.props)
+  onUpdateUser = () => {
+    this.props.updateUser('Sammy')
+  }
 
+  render() {
     return (
       <div className="App">
         <header className="App-header">
@@ -18,6 +22,8 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <button onClick={this.onUpdateUser}>Update User</button>
+        <p>{this.props.user}</p>
       </div>
     )
   }
@@ -28,4 +34,8 @@ const mapStateToProps = (state) => ({
   user: state.user
 })
 
-export default connect(mapStateToProps)(App)
+const mapActionsToProps = {
+  updateUser: updateUser
+}
+
+export default connect(mapStateToProps, mapActionsToProps)(App)
