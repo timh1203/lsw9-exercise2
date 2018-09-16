@@ -4,8 +4,10 @@ import './App.css'
 
 // 9. Import connect feature
 // 10. Import actions
+// 11. Bind action creators
 import { connect } from 'react-redux'
 import { updateUser } from './actions/userActions'
+import { bindActionCreators } from 'redux'
 
 class App extends Component {
   onUpdateUser = (e) => {
@@ -35,8 +37,9 @@ const mapStateToProps = (state, props) => ({
   randomUser:  `${state.user} ${props.randomProp}`
 })
 
-const mapActionsToProps = {
-  updateUser: updateUser
-}
-
+const mapActionsToProps = (dispatch, props) => (
+  bindActionCreators({
+    updateUser: updateUser
+  }, dispatch)
+)
 export default connect(mapStateToProps, mapActionsToProps)(App)
