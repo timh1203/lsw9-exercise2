@@ -5,7 +5,9 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 // 1. Import redux
+// 8. Import Provider
 import { combineReducers, createStore } from 'redux'
+import { Provider } from 'react-redux'
 
 // 5. Combine all the reducers together
 const allReducers = combineReducers({
@@ -51,5 +53,5 @@ function userReducer(state = '', { type, payload}) {
 
 // store.dispatch(updateUserAction)
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 registerServiceWorker();
