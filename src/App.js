@@ -6,10 +6,14 @@ import './App.css'
 // 10. Import actions
 // 11. Bind action creators
 import { connect } from 'react-redux'
-import { updateUser } from './actions/userActions'
-import { bindActionCreators } from 'redux'
+import { updateUser, apiRequest } from './actions/userActions'
+// import { bindActionCreators } from 'redux'
 
 class App extends Component {
+  componentDidMount() {
+    this.props.apiRequest()
+  }
+
   onUpdateUser = (e) => {
     this.props.updateUser(e.target.value)
   }
@@ -37,14 +41,9 @@ const mapStateToProps = (state, props) => ({
   randomUser:  `${state.user} ${props.randomProp}`
 })
 
-const mapActionsToProps = (dispatch, props) => (
-  bindActionCreators({
-    updateUser: updateUser
-  }, dispatch)
-)
-const mergeProps = (propsFromState,propsFromDispatch, ownProps) => {
-  console.log(propsFromState,propsFromDispatch, ownProps)
-
-  return {}
+const mapActionsToProps = {
+  updateUser: updateUser,
+  apiRequest: apiRequest
 }
-export default connect(mapStateToProps, mapActionsToProps, mergeProps)(App)
+
+export default connect(mapStateToProps, mapActionsToProps)(App)
