@@ -1,9 +1,14 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import logo from './logo.svg'
+import './App.css'
+
+// 9. Import connect feature
+import { connect } from 'react-redux'
 
 class App extends Component {
   render() {
+    console.log(this.props)
+
     return (
       <div className="App">
         <header className="App-header">
@@ -14,8 +19,13 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  products: state.products,
+  user: state.user
+})
+
+export default connect(mapStateToProps)(App)
