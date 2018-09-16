@@ -1,4 +1,5 @@
 import axios from 'axios'
+
 export const UPDATE_USER = 'users:updateUser'
 export const SHOW_ERROR = 'users:showError'
 
@@ -15,7 +16,11 @@ export function apiRequest() {
   axios
     .get('https://jsonplaceholder.typicode.com/posts')
     .then(res => console.log(res.data))
-    .catch(err => console.log(err), dispatch(showError()))
+    .catch(err => {
+      console.log(err)
+      // dispatch(showError()) // Did not get this to work, 'dispatch' is not defined 
+    }
+  )
   return {
     type: null,
     payload: null

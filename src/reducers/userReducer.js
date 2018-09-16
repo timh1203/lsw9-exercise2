@@ -5,7 +5,7 @@ export default function userReducer(state = '', { type, payload}) {
     case UPDATE_USER:
       return payload.user
     case SHOW_ERROR:
-    return payload.user
+      return payload.user
     default:
         return state
   }

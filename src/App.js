@@ -6,7 +6,7 @@ import './App.css'
 // 10. Import actions
 // 11. Bind action creators
 import { connect } from 'react-redux'
-import { updateUser, apiRequest } from './actions/userActions'
+import { updateUser, apiRequest, showError } from './actions/userActions'
 // import { bindActionCreators } from 'redux'
 
 class App extends Component {
@@ -43,7 +43,8 @@ const mapStateToProps = (state, props) => ({
 
 const mapActionsToProps = {
   updateUser: updateUser,
-  apiRequest: apiRequest
+  apiRequest: apiRequest,
+  showError: showError
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(App)
